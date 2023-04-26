@@ -3,8 +3,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Octavio's Final Project</title>
+    <title>INST377 Final Project</title>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css" />
 
   </head>
@@ -28,10 +29,38 @@
             </div>
         <div class="right_section box">
           <h3>Local Restaurant List</h3>
-          <div id="map" class="box" ></div>
-          <ol class="box" id="restaurant_list">
+         
+          <div>
+            <canvas id="myChart"></canvas>
+          </div>      
+          
+          <script>
+            const ctx = document.getElementById('myChart');
+          
+            new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                  label: '# of Votes',
+                  data: [12, 19, 3, 5, 2, 3],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+         
+          <!--  <div id="map" class="box" ></div> -->
+          <div class="box" id="restaurant_list">
               A list of local restaurants 
-            </ol>
+          </div>
             <div class="lds-ellipsis" id="data_load_animation"><div></div><div></div><div></div><div></div></div>
         </div>
       </div>
