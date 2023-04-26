@@ -71,8 +71,7 @@ function getRandomIntInclusive(min, max) {
     loadAnimation.style.display = "none";
     generateListButton.classList.add("hidden");
 
-    const carto = initMap();
-  
+/*     const carto = initMap(); */  
     const storedData = localStorage.getItem('storedData');
     let parsedData = JSON.parse(storedData);
   
