@@ -88,7 +88,7 @@ function getRandomIntInclusive(min, max) {
       loadAnimation.style.display = "inline-block";
   
       const results = await fetch(
-        "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json"
+        "https://trackapi.nutritionix.com/v2/search/instant"
       );
   
       const storedList = await results.json();
