@@ -1,89 +1,92 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>INST377 Final Project</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INST377 Final Project</title>
 
-  </head>
-  <body>
-    <div class="wrapper">
-      <header class="header">
-        <h3>Nutrition Fact Checker</h3>
-      </header>
-      <div class="container">
-        <div class="left_section box">
-            <h3>Enter Food Here</h3>
-            <html>Nutrition is important! Track your nutrition information using Nutrionix's API. 
-              Type your meal into the text box, and find which result most matches what you ate. 
-              You can also add to a chart for a breakdown of the information. 
-              You can add multiple meals!</html>
-            <form class="box main_form">
-              <div>
-            <label>Check Your Food</label> 
-                <input type="text" id="input_Text"="What did you eat today?" />
-                <button type="button" id="add_Item">Add Item</button> 
-              </div> 
-                </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-        <div class="right_section box">
-          <h3>Nutrition Info</h3>
-         
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <h3>Nutrition Fact Checker</h3>
+    </header>
+    <div class="container">
+      <div class="left_section box">
+        <h3>Enter Food Here</h3>
+        <html>Nutrition is important! Track your nutrition information using Nutrionix's API.
+        Type your meal into the text box, and find which result most matches what you ate.
+        You can also add to a chart for a breakdown of the information.
+        You can add multiple meals!
+
+        </html>
+        <form class="box main_form">
           <div>
-            <canvas id="myChart"></canvas>
-          </div>      
-          
-          <script>
-            const ctx = document.getElementById('myChart');
-          
-            new Chart(ctx, {
-              type: 'bar',
-              data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                  label: '# of Votes',
-                  data: [12, 19, 3, 5, 2, 3],
-                  borderWidth: 1
-                }]
-              },
-              options: {
-                scales: {
-                  y: {
-                    beginAtZero: true
-                  }
+            <label>Check Your Food</label>
+            <input type="text" id="input_Text"="What did you eat today?" />
+            <button type="button" id="add_Item">Add Item</button>
+          </div>
+      </div>
+      <div class="right_section box">
+        <h3>Nutrition Info</h3>
+
+        <div>
+          <canvas id="myChart"></canvas>
+        </div>
+
+        <script>
+          const ctx = document.getElementById('myChart');
+
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+              datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
                 }
               }
-            });
-          </script>
-         
-         <div class="buttons">
+            }
+          });
+        </script>
+        <div class="buttons">
           <button type="button" id="add_to_chart">Add Nutrition Info to Chart</button>
           <button type="button" id="clear_chart">Clear Current Chart</button>
+        </div>
+      </div>
+      <ol class="box" id="results_box">
+        Results
+        <button type="button" onclick="alert()">Add Item</button>
+      </ol>
+      <div class="lds-ellipsis" id="data_load_animation">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </div>
-      <ol class="box" id="results_box">
-          Results
-          <button type="button" onclick="alert()">Add Item</button> 
-        </ol>
-        <div class="lds-ellipsis" id="data_load_animation"><div></div><div></div><div></div><div></div></div>
-    </div>      
   </div>
   </div>
   <div class="container" id="button_results_box">
-
   </div>
-</div>
-    <footer class="footer">
-      <a
-        href="https://github.com/luismvalderrama/INST377-final-project" 
-        target="_blank"
-        rel="noopener noreferrer"
-        >INST 377 Final Project Repository</a>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+  </div>
+  <footer class="footer">
+    <a href="https://github.com/luismvalderrama/INST377-final-project" target="_blank" rel="noopener noreferrer">INST
+      377 Final Project Repository</a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
 </html>
