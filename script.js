@@ -20,3 +20,10 @@ async function newFunc(temp){
       'x-app-key': '85cb5f8ba0262142e4397b3393c105c4'
     }
   });
+  const data = await result.json()
+  const foodItem = data.foods[0];
+  console.log(foodItem);
+  const foodItemInject = `<p>${foodItem.food_name}</p><img src="${foodItem.photo.thumb}" height="10%" width="10%"></img>`
+  buttonResults.innerHTML += foodItemInject;
+  console.log("2");
+}
