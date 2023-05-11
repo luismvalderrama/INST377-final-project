@@ -1,64 +1,22 @@
+function injectHTML(list) {
+  console.log("fired injectHTML");
+  console.log(list);
+  const target = document.querySelector("#results_box");
+  target.innerHTML = "";
+  list.forEach((item) => {
+  //  const str = `<li><b>Brand: </b> ${item.brand_name} <b>Food Name: </b> ${item.food_name} <b>Calories: </b> ${item.nf_calories == 0 ? "N/A" : item.nf_calories}</li>`;
+  const str = `<div><button type="button" onclick="newFunc('${item.nix_item_id}')">${item.food_name}</button></div>`
+    target.innerHTML += str;
+  });
+}
 
-  async function mainEvent() {
-    // the async keyword means we can make API requests
-    const loadDataButton = document.querySelector("#data_load");
-    const clearDataButton = document.querySelector("#data_clear");
-    const generateListButton = document.querySelector("#generate");
-    const textField = document.querySelector("#resto");
-  
-    const loadAnimation = document.querySelector("#data_load_animation");
-    loadAnimation.style.display = "none";
-    generateListButton.classList.add("hidden");
-
-/*     const carto = initMap(); */  
-    const storedData = localStorage.getItem('storedData');
-    let parsedData = JSON.parse(storedData);
-  
-    if (parsedData?.length > 0) {
-      generateListButton.classList.remove("hidden");
+async function newFunc(temp){
+  const url = "https://trackapi.nutritionix.com/v2/search/item?nix_item_id=";
+  const buttonResults = document.querySelector("#button_results_box");
+  buttonResults.innerHTML = "";
+  const result = await fetch(url + temp, {
+    headers: {
+      'x-app-id': 'a70a1a77',
+      'x-app-key': '85cb5f8ba0262142e4397b3393c105c4'
     }
-  
-    let currentList = [];
-  
-    /* We need to listen to an "event" to have something happen in our page - here we're listening for a "submit" */
-    loadDataButton.addEventListener("click", async (submitEvent) => {
-      // async has to be declared on every function that needs to "await" something
-      console.log("Loading data");
-      loadAnimation.style.display = "inline-block";
-  
-      const results = await fetch(
-        /* /v2/search/instant */
-        "https://trackapi.nutritionix.com/v2/search/instant"
-      );
-  
-      const storedList = await results.json();
-      localStorage.setItem('storedData', JSON.stringify(storedList));
-      parsedData = storedList;
-
-      if (parsedData?.length > 0) {
-        generateListButton.classList.remove("hidden");
-      }
-  
-      loadAnimation.style.display = "none";
-      // console.table(storedList);
-    });
-  
-  
-  
-    generateListButton.addEventListener("click", (event) => {
-      console.log("generate new list");
-      currentList = cutRestaurantList(parsedData);
-      console.log(currentList);
-      injectHTML(currentList);
-      markerPlace(currentList, carto);
-    });
-
-    clearDataButton.addEventListener("click", (event) => {
-      console.log('clear browser data');
-      localStorage.clear();
-      console.log('localStorage Check', localStorage.getItem("storedData"))
-    })
-  }
-  
-  document.addEventListener("DOMContentLoaded", async () => mainEvent()); // the async keyword means we can make API requests
-  
+  });
